@@ -1,0 +1,25 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #e9e7e4;
+}
+paper-scroll-header-panel {
+    height: 100%;
+}
+.title {
+    transform-origin: 0;
+    font-size: 40px!important;
+    color: rgb(234, 223, 198);
+}
+.indent {
+    margin-left: 60px;
+}
+.paper-scroll-header-panel-0 #headerBg.paper-scroll-header-panel {
+    background-image: url(bgimg.jpg);
+}
+.paper-scroll-header-panel-0 #condensedHeaderBg.paper-scroll-header-panel {
+    background-color: #312319;
+}
+paper-toolbar.tall {
+    background-color: transparent;
+}
