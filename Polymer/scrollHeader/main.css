@@ -12,10 +12,12 @@ paper-toolbar.tall {
 .title {
     transform-origin: 0;
     font-size: 40px!important;
+    margin-top: -5px;
+    line-height: 100%!important;
     color: rgb(234, 223, 198);
 }
 .indent {
-    margin-left: 60px;
+    margin-left: 50px!important;
 }
 .paper-scroll-header-panel-0 #headerBg.paper-scroll-header-panel {
     background-image: url(bgimg.jpg);
