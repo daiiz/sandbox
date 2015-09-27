@@ -6,6 +6,9 @@ html, body {
 paper-scroll-header-panel {
     height: 100%;
 }
+paper-toolbar.tall {
+    height: 192px;
+}
 .title {
     transform-origin: 0;
     font-size: 40px!important;
