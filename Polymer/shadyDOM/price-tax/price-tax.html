@@ -10,15 +10,53 @@
   </style>
 
   <template>
-    <div id="menu">
+    <span id="menu">
       <content></content>
-    </div>
+    </span>
+    <span id="total"></span>
+    <input type="checkbox" checked on-change="handleChanged" id="way">税込み
   </template>
 
 </dom-module>
 
 <script>
 Polymer({
-  is: 'price-tax'
+  is: 'price-tax',
+  properties: {
+    price: {
+      type: Number,
+      observer: '_priceChanged'
+  },
+    rate: {
+      type: Number,
+      observer: '_rateChanged'
+  },
+    switchable: Boolean
+  },
+
+  ready: function () {
+    this.computePrice();
+  },
+
+  handleChanged: function () {
+    this.computePrice();
+  },
+
+  _priceChanged: function () {
+    this.computePrice();
+  },
+
+  _rateChanged: function () {
+    this.computePrice();
+  },
+
+  computePrice: function () {
+    var tax = 0;
+    if (this.$$('#way').checked) {
+      tax = Math.floor(this.price * this.rate / 100);
+    }
+
+    this.$$('#total').innerHTML = this.price + tax + '円';
+  }
 });
 </script>
