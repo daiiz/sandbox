@@ -12,25 +12,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <title>seed-element Demo</title>
+    <title>price-tax Demo</title>
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../price-tax.html">
   </head>
   <body>
-
-    <p>An example of <code>&lt;seed-element&gt;</code>:</p>
-
-    <button>Say Something</button>
-
-    <seed-element author='{"name": "Lord Meowser", "image": "http://placekitten.com/g/200/300"}' fancy>
-      <h2>Hello seed-element</h2>
-    </seed-element>
-
-    <script>
-      document.querySelector('button').addEventListener('click', function() {
-        alert(document.querySelector('seed-element').sayHello('Hallo!'));
-      });
-    </script>
+    An example of price-tax tag:
+    <price-tax price=2000 rate=8 switchable></price-tax>
 
   </body>
 </html>
