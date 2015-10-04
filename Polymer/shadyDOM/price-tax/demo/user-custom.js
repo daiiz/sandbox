@@ -3,21 +3,9 @@
 
 // よろしくないけど仕方ない
 var React = {};
-React.createElement = (...args) => {
-    var name = args[0];
-    var props = args[1];
+React.createElement = (name, props, ...children) => {
     if (name === null) return;
     var parent = document.createElement(name);
-    args.forEach((arg, i) => {
-        if (i >= 2) {
-            var child = arg;    // 再帰呼び出し
-            if (typeof(child) == 'string') {
-                Polymer.dom(parent).appendChild(document.createTextNode(child));
-            } else {
-                Polymer.dom(parent).appendChild(child);
-            }
-        }
-    });
     if (props !== null) {
         var keys = Object.keys(props);
         keys.forEach((key) => {
@@ -25,6 +13,14 @@ React.createElement = (...args) => {
             parent.setAttribute(key, props[key]);
         });
     }
+    children.forEach(c => {
+        var child = c;    // 再帰呼び出し
+        if (typeof(child) == 'string') {
+            Polymer.dom(parent).appendChild(document.createTextNode(child));
+        } else {
+            Polymer.dom(parent).appendChild(child);
+        }
+    });
     return parent;
 };
 
@@ -61,5 +57,5 @@ window.addEventListener('WebComponentsReady', (e) => {
 
     // 追加の結果を覗く
     document.querySelector('body').appendChild(salad);
-    console.log(Polymer.dom(salad).innerHTML);
+    console.log(Polymer.dom(salad).children);
 });

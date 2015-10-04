@@ -5,25 +5,13 @@
 'use strict';
 
 var React = {};
-React.createElement = function () {
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
+React.createElement = function (name, props) {
+    for (var _len = arguments.length, children = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+        children[_key - 2] = arguments[_key];
     }
 
-    var name = args[0];
-    var props = args[1];
     if (name === null) return;
     var parent = document.createElement(name);
-    args.forEach(function (arg, i) {
-        if (i >= 2) {
-            var child = arg; // 再帰呼び出し
-            if (typeof child == 'string') {
-                Polymer.dom(parent).appendChild(document.createTextNode(child));
-            } else {
-                Polymer.dom(parent).appendChild(child);
-            }
-        }
-    });
     if (props !== null) {
         var keys = Object.keys(props);
         keys.forEach(function (key) {
@@ -31,6 +19,14 @@ React.createElement = function () {
             parent.setAttribute(key, props[key]);
         });
     }
+    children.forEach(function (c) {
+        var child = c; // 再帰呼び出し
+        if (typeof child == 'string') {
+            Polymer.dom(parent).appendChild(document.createTextNode(child));
+        } else {
+            Polymer.dom(parent).appendChild(child);
+        }
+    });
     return parent;
 };
 
@@ -66,6 +62,21 @@ window.addEventListener('WebComponentsReady', function (e) {
     var salad = React.createElement(
         'price-tax',
         { price: '400', rate: '8', switchable: true },
+        React.createElement(
+            'a',
+            null,
+            'A',
+            React.createElement(
+                'b',
+                null,
+                'B',
+                React.createElement(
+                    'c',
+                    null,
+                    'C'
+                )
+            )
+        ),
         '山盛りサラダ ',
         React.createElement(
             'span',
@@ -76,6 +87,6 @@ window.addEventListener('WebComponentsReady', function (e) {
 
     // 追加の結果を覗く
     document.querySelector('body').appendChild(salad);
-    console.log(Polymer.dom(salad).innerHTML);
+    console.log(Polymer.dom(salad).children);
 });
 
