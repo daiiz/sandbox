@@ -62,21 +62,6 @@ window.addEventListener('WebComponentsReady', function (e) {
     var salad = React.createElement(
         'price-tax',
         { price: '400', rate: '8', switchable: true },
-        React.createElement(
-            'a',
-            null,
-            'A',
-            React.createElement(
-                'b',
-                null,
-                'B',
-                React.createElement(
-                    'c',
-                    null,
-                    'C'
-                )
-            )
-        ),
         '山盛りサラダ ',
         React.createElement(
             'span',
