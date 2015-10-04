@@ -1,4 +1,4 @@
-// Polymer & ES6 !!!!
+// Polymer & ES6 (& JSX) !!!!
 // $ babel user-custom.js > user.js
 
 // よろしくないけど仕方ない
@@ -16,7 +16,7 @@ React.createElement = function () {
     var parent = document.createElement(name);
     args.forEach(function (arg, i) {
         if (i >= 2) {
-            var child = arg;
+            var child = arg; // 再帰呼び出し
             if (typeof child == 'string') {
                 Polymer.dom(parent).appendChild(document.createTextNode(child));
             } else {
@@ -27,6 +27,7 @@ React.createElement = function () {
     if (props !== null) {
         var keys = Object.keys(props);
         keys.forEach(function (key) {
+            if (key === 'className') key = 'class';
             parent.setAttribute(key, props[key]);
         });
     }
@@ -44,14 +45,6 @@ window.addEventListener('WebComponentsReady', function (e) {
     console.log(priceTaxElement.innerHTML);
     console.dirxml(priceTaxElement.children);
 
-    var salad = React.createElement(
-        'price-tax',
-        { price: '400', rate: '8', switchable: true },
-        '山盛りサラダ'
-    );
-    document.querySelector('body').appendChild(salad);
-    console.log(Polymer.dom(salad).innerHTML);
-
     // 「Shady DOM」の世界を覗く
     var shadyWorld = Polymer.dom(document.body).children.push();
 
@@ -60,5 +53,29 @@ window.addEventListener('WebComponentsReady', function (e) {
     console.info('Shady DOM:');
     console.log(priceTaxElement.innerHTML);
     console.dirxml(priceTaxElement.children);
+
+    // ミニサラダを追加（Polymer公式の方法）
+    var miniSalad = document.createElement('price-tax');
+    Polymer.dom(miniSalad).innerHTML = 'ミニサラダ';
+    Polymer.dom(miniSalad).setAttribute('price', 300);
+    Polymer.dom(miniSalad).setAttribute('rate', 8);
+    Polymer.dom(miniSalad).setAttribute('switchable', true);
+    document.querySelector('body').appendChild(miniSalad);
+
+    // 山盛りサラダを追加（JSX な Syntax Sugar）
+    var salad = React.createElement(
+        'price-tax',
+        { price: '400', rate: '8', switchable: true },
+        '山盛りサラダ ',
+        React.createElement(
+            'span',
+            { style: 'color: red' },
+            'お得!'
+        )
+    );
+
+    // 追加の結果を覗く
+    document.querySelector('body').appendChild(salad);
+    console.log(Polymer.dom(salad).innerHTML);
 });
 

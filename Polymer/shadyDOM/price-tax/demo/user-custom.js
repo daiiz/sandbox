@@ -21,6 +21,7 @@ React.createElement = (...args) => {
     if (props !== null) {
         var keys = Object.keys(props);
         keys.forEach((key) => {
+            if (key === 'className') key = 'class';
             parent.setAttribute(key, props[key]);
         });
     }
@@ -47,9 +48,18 @@ window.addEventListener('WebComponentsReady', (e) => {
     console.log(priceTaxElement.innerHTML);
     console.dirxml(priceTaxElement.children);
 
+    // ミニサラダを追加（Polymer公式の方法）
+    let miniSalad = document.createElement('price-tax');
+    Polymer.dom(miniSalad).innerHTML = 'ミニサラダ';
+    Polymer.dom(miniSalad).setAttribute('price', 300);
+    Polymer.dom(miniSalad).setAttribute('rate', 8);
+    Polymer.dom(miniSalad).setAttribute('switchable', true);
+    document.querySelector('body').appendChild(miniSalad);
 
-    // 山盛りサラダを追加（Syntax Sugar）
-    let salad = <price-tax price="400" rate="8" switchable>山盛りサラダ</price-tax>;
+    // 山盛りサラダを追加（JSX な Syntax Sugar）
+    let salad = <price-tax price="400" rate="8" switchable>山盛りサラダ <span style="color: red">お得!</span></price-tax>;
+
+    // 追加の結果を覗く
     document.querySelector('body').appendChild(salad);
     console.log(Polymer.dom(salad).innerHTML);
 });
