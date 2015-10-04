@@ -53,7 +53,8 @@ window.addEventListener('WebComponentsReady', (e) => {
     document.querySelector('body').appendChild(miniSalad);
 
     // 山盛りサラダを追加（JSX な Syntax Sugar）
-    let salad = <price-tax price="400" rate="8" switchable>山盛りサラダ <span style="color: red">お得!</span></price-tax>;
+    let message = 'お得!';
+    let salad = <price-tax price="400" rate="8" switchable>山盛りサラダ <span style="color: red">{message}</span></price-tax>;
 
     // 追加の結果を覗く
     document.querySelector('body').appendChild(salad);

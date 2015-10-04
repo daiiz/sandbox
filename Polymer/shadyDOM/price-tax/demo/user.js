@@ -59,6 +59,7 @@ window.addEventListener('WebComponentsReady', function (e) {
     document.querySelector('body').appendChild(miniSalad);
 
     // 山盛りサラダを追加（JSX な Syntax Sugar）
+    var message = 'お得!';
     var salad = React.createElement(
         'price-tax',
         { price: '400', rate: '8', switchable: true },
@@ -66,7 +67,7 @@ window.addEventListener('WebComponentsReady', function (e) {
         React.createElement(
             'span',
             { style: 'color: red' },
-            'お得!'
+            message
         )
     );
 
