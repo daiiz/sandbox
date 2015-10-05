@@ -14,7 +14,7 @@ React.createElement = (name, props, ...children) => {
         });
     }
     children.forEach(c => {
-        var child = c;    // 再帰呼び出し
+        var child = c;    // React.createElement() を再帰呼び出し
         if (typeof(child) == 'string') {
             Polymer.dom(parent).appendChild(document.createTextNode(child));
         } else {
