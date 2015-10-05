@@ -53,7 +53,7 @@ window.addEventListener('WebComponentsReady', (e) => {
     let message = 'お得!';
     let salad = <price-tax price="400" rate="8" switchable>山盛りサラダ <span style="color: red">{message}</span></price-tax>;
 
-    // 追加の結果を覗く
     document.querySelector('body').appendChild(salad);
+    // 追加の結果を覗く
     console.log(Polymer.dom(salad).children);
 });

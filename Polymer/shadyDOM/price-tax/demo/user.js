@@ -68,8 +68,8 @@ window.addEventListener('WebComponentsReady', function (e) {
         )
     );
 
-    // 追加の結果を覗く
     document.querySelector('body').appendChild(salad);
+    // 追加の結果を覗く
     console.log(Polymer.dom(salad).children);
 });
 
