@@ -35,9 +35,6 @@ window.addEventListener('WebComponentsReady', (e) => {
     console.log(priceTaxElement.innerHTML);
     console.dirxml(priceTaxElement.children);
 
-    // 「Shady DOM」の世界を覗く
-    let shadyWorld = Polymer.dom(document.body).children.push();
-
     // 「Shady DOM」の操作
     priceTaxElement = Polymer.dom(calvi);
     console.info('Shady DOM:');
