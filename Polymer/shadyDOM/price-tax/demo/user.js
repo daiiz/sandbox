@@ -1,11 +1,10 @@
 // Polymer & ES6 (& JSX) !!!!
 // $ babel user-custom.js > user.js
 
-// よろしくないけど仕方ない
+// よろしくなった
 'use strict';
 
-var React = {};
-React.createElement = function (name, props) {
+var polyjsx = function polyjsx(name, props) {
     for (var _len = arguments.length, children = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
         children[_key - 2] = arguments[_key];
     }
@@ -20,7 +19,7 @@ React.createElement = function (name, props) {
         });
     }
     children.forEach(function (c) {
-        var child = c; // 再帰呼び出し
+        var child = c; // React.createElement() を再帰呼び出し
         if (typeof child == 'string') {
             Polymer.dom(parent).appendChild(document.createTextNode(child));
         } else {
@@ -56,12 +55,13 @@ window.addEventListener('WebComponentsReady', function (e) {
     document.querySelector('body').appendChild(miniSalad);
 
     // 山盛りサラダを追加（JSX な Syntax Sugar）
+    /** @jsx polyjsx */
     var message = 'お得!';
-    var salad = React.createElement(
+    var salad = polyjsx(
         'price-tax',
         { price: '400', rate: '8', switchable: true },
         '山盛りサラダ ',
-        React.createElement(
+        polyjsx(
             'span',
             { style: 'color: red' },
             message

@@ -1,9 +1,8 @@
 // Polymer & ES6 (& JSX) !!!!
 // $ babel user-custom.js > user.js
 
-// よろしくないけど仕方ない
-var React = {};
-React.createElement = (name, props, ...children) => {
+// よろしくなった
+var polyjsx = (name, props, ...children) => {
     if (name === null) return;
     var parent = document.createElement(name);
     if (props !== null) {
@@ -50,6 +49,7 @@ window.addEventListener('WebComponentsReady', (e) => {
     document.querySelector('body').appendChild(miniSalad);
 
     // 山盛りサラダを追加（JSX な Syntax Sugar）
+    /** @jsx polyjsx */
     let message = 'お得!';
     let salad = <price-tax price="400" rate="8" switchable>山盛りサラダ <span style="color: red">{message}</span></price-tax>;
 
