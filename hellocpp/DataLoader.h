@@ -9,7 +9,7 @@
 using namespace std;
 
 class DataLoader {
-public:
-		int e = 2;
-		int loadCSV ();
+  public:
+    int e = 2;
+    int loadCSV ();
 };

@@ -6,7 +6,7 @@
 using namespace std;
 
 int DataLoader::loadCSV () {
-	cout << "Good" << endl;
-	return 9;
+  cout << "Good" << endl;
+  return 9;
 };
 
