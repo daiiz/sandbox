@@ -10,6 +10,6 @@ using namespace std;
 
 class DataLoader {
   public:
-    int e = 2;
+    int e;
     int loadCSV ();
 };
