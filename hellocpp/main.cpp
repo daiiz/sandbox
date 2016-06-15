@@ -1,5 +1,4 @@
 #include <iostream>
-#include <boost/scoped_ptr.hpp>
 #include <memory>
 #include "DataLoader.h"
 
@@ -21,8 +20,18 @@ int test1 () {
   return 0;
 }
 
+int test2 () {
+  std::unique_ptr <DataLoader> loader(new DataLoader());
+  std::unique_ptr <string> fname(new string("eee"));
+  // &fname: アドレス番地が見れる
+  // *fname: 格納されているものが見れる
+  cout << &fname << endl;
+  cout << *fname << endl;
+  return 0;
+}
+
 int main() {
-  cout << "Hello, World!" << endl;
-  test1();
+  cout << "Hello, World!\n" << endl;
+  test2();
   return 0;
 }
