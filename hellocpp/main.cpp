@@ -1,5 +1,6 @@
 #include <iostream>
 #include <memory>
+#include <map>
 #include "DataLoader.h"
 
 int test0 () {
@@ -30,7 +31,10 @@ int test2 () {
   cout << fn << endl;
 
   //loader->loadText(fname->c_str());
-  loader->loadText(fn);
+
+  std::shared_ptr <map<string, string>> namesMap(new map<string, string>());
+  loader->androidCodeNames(fn, namesMap);
+  cout << namesMap->size() << endl;
   return 0;
 }
 

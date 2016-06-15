@@ -12,5 +12,5 @@ class DataLoader {
   public:
     int e;
     int loadCSV();
-    void loadText(string inputFilePath);
+    void androidCodeNames(string, std::shared_ptr <map<string, string>>);
 };
