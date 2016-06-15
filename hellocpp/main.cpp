@@ -1,6 +1,8 @@
 #include <iostream>
 #include <boost/scoped_ptr.hpp>
+#include <memory>
 #include "DataLoader.h"
+
 
 int test0 () {
   DataLoader *loader = new DataLoader();
@@ -12,7 +14,7 @@ int test0 () {
 }
 
 int test1 () {
-  boost::scoped_ptr <DataLoader> loader(new DataLoader());
+  std::unique_ptr <DataLoader> loader(new DataLoader());
   loader->e = 100;
   int r = loader->loadCSV();
   cout << loader->e + r << endl;

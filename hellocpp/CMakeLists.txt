@@ -10,7 +10,7 @@ if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
 endif()
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libstdc++")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++ -Wall -Wextra")
 
 set(SOURCE_FILES DataLoader.cpp DataLoader.h main.cpp)
 add_executable(hellocpp ${SOURCE_FILES})
