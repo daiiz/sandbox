@@ -2,8 +2,9 @@
 // Created by Daiki Iizuka on 2016/06/10.
 //
 #include <iostream>
-#include <string>
 #include <fstream>
+#include <map>
+#include <list>
 #include "DataLoader.h"
 
 
@@ -20,9 +21,17 @@ void DataLoader::loadText (std::string filePath) {
     cout << "fail" << endl;
     return;
   }
+
+  // マップを作ってみる
+  // 頭文字をキー，名称を値とする
+  map<string, string> namesMap;
   while (getline(ifs, str)) {
     cout << str << endl;
+    // 頭文字
+    string initials = str.substr(0, 1);
+    namesMap.insert(map<string, string>::value_type(initials, str));
   }
+  cout << namesMap.size() << endl;
 };
 
 

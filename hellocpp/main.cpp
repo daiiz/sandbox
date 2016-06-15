@@ -23,10 +23,12 @@ int test2 () {
   std::unique_ptr <DataLoader> loader(new DataLoader());
   std::unique_ptr <string> fname(new string("/Users/daiki/GitHubRepos/sandbox/hellocpp/android_names.txt"));
   std::string fn = "/Users/daiki/GitHubRepos/sandbox/hellocpp/android_names.txt";
+
   // &fname: アドレス番地が見れる
   // *fname: 格納されているものが見れる
   cout << &fn << endl;
   cout << fn << endl;
+
   //loader->loadText(fname->c_str());
   loader->loadText(fn);
   return 0;
