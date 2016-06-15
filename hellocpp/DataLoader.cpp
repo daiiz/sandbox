@@ -15,7 +15,10 @@ int DataLoader::loadCSV () {
 void DataLoader::loadText (char* filePath) {
   std::ifstream ifs(filePath);
   string str;
-  if (ifs.fail()) return;
+  if (ifs.fail()) {
+    cout << "fail" << endl;
+    return;
+  }
   while (getline(ifs, str)) {
     cout << str << endl;
   }
