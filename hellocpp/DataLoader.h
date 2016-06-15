@@ -11,5 +11,6 @@ using namespace std;
 class DataLoader {
   public:
     int e;
-    int loadCSV ();
+    int loadCSV();
+    void loadText(char* inputFilePath);
 };
