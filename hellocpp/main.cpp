@@ -2,7 +2,6 @@
 #include <memory>
 #include "DataLoader.h"
 
-
 int test0 () {
   DataLoader *loader = new DataLoader();
   loader->e = 10;
@@ -23,13 +22,16 @@ int test1 () {
 int test2 () {
   std::unique_ptr <DataLoader> loader(new DataLoader());
   std::unique_ptr <string> fname(new string("/Users/daiki/GitHubRepos/sandbox/hellocpp/android_names.txt"));
+  std::string fn = "/Users/daiki/GitHubRepos/sandbox/hellocpp/android_names.txt";
   // &fname: アドレス番地が見れる
   // *fname: 格納されているものが見れる
-  cout << &fname << endl;
-  cout << *fname << endl;
-  loader->loadText(fname->c_str());
+  cout << &fn << endl;
+  cout << fn << endl;
+  //loader->loadText(fname->c_str());
+  loader->loadText(fn);
   return 0;
 }
+
 
 int main() {
   cout << "Hello, World!\n" << endl;
