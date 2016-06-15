@@ -22,12 +22,12 @@ int test1 () {
 
 int test2 () {
   std::unique_ptr <DataLoader> loader(new DataLoader());
-  std::unique_ptr <string> fname(new string("./android_names.txt"));
+  std::unique_ptr <string> fname(new string("/Users/daiki/GitHubRepos/sandbox/hellocpp/android_names.txt"));
   // &fname: アドレス番地が見れる
   // *fname: 格納されているものが見れる
   cout << &fname << endl;
   cout << *fname << endl;
-  loader->loadText(nullptr);
+  loader->loadText(fname->c_str());
   return 0;
 }
 

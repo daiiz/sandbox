@@ -12,5 +12,5 @@ class DataLoader {
   public:
     int e;
     int loadCSV();
-    void loadText(char* inputFilePath);
+    void loadText(string inputFilePath);
 };

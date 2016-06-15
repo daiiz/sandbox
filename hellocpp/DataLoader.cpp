@@ -12,7 +12,7 @@ int DataLoader::loadCSV () {
   return 20;
 };
 
-void DataLoader::loadText (char* filePath) {
+void DataLoader::loadText (string filePath) {
   std::ifstream ifs(filePath);
   string str;
   if (ifs.fail()) {
