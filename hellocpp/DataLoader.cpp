@@ -12,10 +12,11 @@ int DataLoader::loadCSV () {
   return 20;
 };
 
-void DataLoader::loadText (string filePath) {
+void DataLoader::loadText (std::string filePath) {
   std::ifstream ifs(filePath);
-  string str;
+  std::string str;
   if (ifs.fail()) {
+    // TODO: エラーの詳細調べ方
     cout << "fail" << endl;
     return;
   }
